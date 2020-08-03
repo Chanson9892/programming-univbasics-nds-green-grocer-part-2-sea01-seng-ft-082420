@@ -38,9 +38,13 @@ end
 
 def checkout(cart, coupons)
   final_total = 0
+  #consolidates cart
   consolidated_cart = consolidate_cart(cart)
+  # variable for the applied coupons using consolidated_cart
   pre_clearance_total = apply_coupons(consolidated_cart, coupons)
+  #variable for appliying clearances after applying coupons
   ready_for_checkout_total = apply_clearance(pre_clearance_total)
+  # runs through each item after applying coupons and clearances
   ready_for_checkout_total.each do |grocery_item|
     item_total = grocery_item[:price] * grocery_item[:count]
     final_total = final_total + item_total
