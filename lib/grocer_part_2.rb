@@ -4,6 +4,7 @@ require "pry"
 def apply_coupons(cart, coupons)
   coupons.each do |coupon_item|
     #check the coupon against each item in the cart
+    binding.pry
     cart.each do |cart_item|
       #check whether it's the same item.
       if cart_item[:item] == coupon_item[:item]
