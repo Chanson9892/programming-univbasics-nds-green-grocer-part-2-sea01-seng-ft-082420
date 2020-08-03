@@ -27,7 +27,6 @@ def apply_clearance(cart)
       if grocery_item[:clearance] == true
         grocery_item[:price] = (grocery_item[:price] * 0.80).round(2)
       end
-      binding.pry
   end
   cart
 end
