@@ -37,5 +37,16 @@ def apply_clearance(cart)
 end
 
 def checkout(cart, coupons)
-
+  final_total = 0
+  consolidated_cart = consolidate_cart(cart)
+  pre_clearance_total = apply_coupons(consolidated_cart, coupons)
+  ready_for_checkout_total = apply_clearance(pre_clearance_total)  
+  ready_for_checkout_total.each do |grocery_item|
+    item_total = grocery_item[:price] * grocery_item[:count]
+    final_total = final_total + item_total
+  end
+  if final_total > 100.00
+    final_total = final_total * 0.90
+  end
+  final_total
 end
