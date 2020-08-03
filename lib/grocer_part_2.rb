@@ -23,9 +23,12 @@ def apply_coupons(cart, coupons)
 end
 
 def apply_clearance(cart)
-  # Consult README for inputs and outputs
-  #
-  # REMEMBER: This method **should** update cart
+  cart.each do |grocery_item|
+      if grocery_item[:clearance] == true
+        grocery_item[:price] = (grocery_item[:price] * 0.80).round(2)
+      end 
+  end
+  cart
 end
 
 def checkout(cart, coupons)
