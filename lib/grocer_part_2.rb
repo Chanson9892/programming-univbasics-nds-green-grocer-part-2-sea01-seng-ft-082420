@@ -7,8 +7,11 @@ def apply_coupons(cart, coupons)
     cart.each do |cart_item|
       #check whether it's the same item.
       if cart_item[:item] == coupon_item[:item]
+        #check to see if there are more or equal amount of item than it says on the coupon
         if cart_item[:count] >= coupon_item[:num]
+          #the new count of the item now equals the item left after coupon
           cart_item[:count] = cart_item[:count] - coupon_item[:num]
+          #makes a new array index with all the keys for the couponed item
           cart[cart.length] = {
             :item => cart_item[:item] + " W/COUPON",
             :price => coupon_item[:cost] / coupon_item[:num],
